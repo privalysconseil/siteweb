@@ -20,53 +20,19 @@
   padding: 10rem 2.5rem 9rem;
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
-
-/* Animated shield emblem */
-.hero-emblem {
-  width: 96px; height: 96px; margin-bottom: 2.5rem;
-  animation: fadeUp 0.6s 0.1s ease both;
-}
+.hero-emblem { width: 96px; height: 96px; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.1s ease both; }
 .hero-emblem svg { width: 100%; height: 100%; overflow: visible; }
-
-@keyframes shieldPulse { 0%,100%{r:30;opacity:0.18} 50%{r:44;opacity:0} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
-
-.hero-h1 {
-  font-family: var(--serif); font-size: clamp(2.2rem,5vw,4.2rem);
-  font-weight: 700; line-height: 1.1; color: var(--blanc);
-  animation: fadeUp 0.6s 0.2s ease both;
-}
+.hero-h1 { font-family: var(--serif); font-size: clamp(2.2rem,5vw,4.2rem); font-weight: 700; line-height: 1.1; color: var(--blanc); animation: fadeUp 0.6s 0.2s ease both; }
 .hero-h1 .em { color: var(--emeraude); }
-.hero-sub {
-  display: block; font-weight: 400; font-style: italic;
-  color: var(--argent-l); font-size: 0.78em; margin-top: 0.4rem;
-}
-.hero-p {
-  font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--argent-l);
-  max-width: 600px; margin: 1.8rem auto 0;
-  animation: fadeUp 0.6s 0.3s ease both;
-}
-.hero-btns {
-  display: flex; gap: 1rem; margin-top: 2.8rem;
-  flex-wrap: wrap; justify-content: center;
-  animation: fadeUp 0.6s 0.4s ease both;
-}
-.hero-stats {
-  display: flex; gap: 3.5rem; margin-top: 4.5rem;
-  flex-wrap: wrap; justify-content: center;
-  animation: fadeUp 0.6s 0.5s ease both;
-}
+.hero-sub { display: block; font-weight: 400; font-style: italic; color: var(--argent-l); font-size: 0.78em; margin-top: 0.4rem; }
+.hero-p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--argent-l); max-width: 600px; margin: 1.8rem auto 0; animation: fadeUp 0.6s 0.3s ease both; }
+.hero-btns { display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.4s ease both; }
+.hero-stats { display: flex; gap: 3.5rem; margin-top: 4.5rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.5s ease both; }
 .stat { text-align: center; }
 .stat-n { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--emeraude); display: block; }
 .stat-l { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--argent); display: block; margin-top: 0.2rem; }
-
-/* scroll cue — bien en dessous des stats, pas de position:absolute */
-.scroll-cue {
-  display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
-  margin-top: 4rem;
-  animation: fadeUp 0.8s 0.9s ease both;
-}
+.scroll-cue { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; margin-top: 4rem; animation: fadeUp 0.8s 0.9s ease both; }
 .scroll-cue span { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(148,163,184,0.55); }
 .scroll-cue-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--emeraude), transparent); animation: lineAnim 2.2s infinite; }
 @keyframes lineAnim { 0%,100%{transform:scaleY(1);opacity:1} 50%{transform:scaleY(0.5);opacity:0.35} }
@@ -83,42 +49,97 @@
 .actu-h { font-family: var(--serif); font-size: 1.13rem; font-weight: 700; color: var(--blanc); line-height: 1.3; margin-bottom: 0.75rem; }
 .actu-p { font-size: 0.86rem; color: var(--argent-l); line-height: 1.72; }
 
-/* ── QUIZ ── */
+/* ══════════════════════════════════
+   QUIZ — 6 questions, scoring multi-critères
+══════════════════════════════════ */
 #quiz { padding: 6rem 2.5rem; background: var(--bleu); }
-.quiz-box { max-width: 780px; margin: 3rem auto 0; background: var(--bleu-card); border: 1px solid rgba(16,185,129,0.18); border-radius: 10px; overflow: hidden; box-shadow: var(--sh); }
-.quiz-head { padding: 2rem 2.5rem; border-bottom: 1px solid rgba(203,213,225,0.09); background: linear-gradient(135deg, rgba(16,185,129,0.07), transparent); }
-.quiz-head h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--blanc); margin-bottom: 0.25rem; }
-.quiz-head p { font-size: 0.86rem; color: var(--argent-l); }
-.qbar-wrap { height: 3px; background: rgba(203,213,225,0.08); margin-top: 1.4rem; border-radius: 100px; overflow: hidden; }
-#quizBar { height: 100%; background: linear-gradient(90deg, var(--emeraude), var(--em-l)); transition: width 0.5s ease; border-radius: 100px; width: 0%; }
-.quiz-body { padding: 2.5rem; }
-.q-step { display: none; animation: fadeUp 0.4s ease; }
+.quiz-intro { text-align: center; margin-bottom: 3rem; }
+.quiz-box {
+  max-width: 820px; margin: 0 auto;
+  background: var(--bleu-card); border: 1px solid rgba(16,185,129,0.18);
+  border-radius: 12px; overflow: hidden; box-shadow: var(--sh);
+}
+.quiz-head {
+  padding: 2rem 2.5rem; border-bottom: 1px solid rgba(203,213,225,0.09);
+  background: linear-gradient(135deg, rgba(16,185,129,0.07), transparent);
+}
+.quiz-head h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--blanc); margin-bottom: 0.2rem; }
+.quiz-head p { font-size: 0.84rem; color: var(--argent-l); }
+.quiz-progress {
+  display: flex; align-items: center; gap: 1rem; margin-top: 1.3rem;
+}
+.quiz-progress-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--emeraude); white-space: nowrap; }
+.qbar-wrap { flex: 1; height: 3px; background: rgba(203,213,225,0.08); border-radius: 100px; overflow: hidden; }
+#quizBar { height: 100%; background: linear-gradient(90deg, var(--emeraude), var(--em-l)); transition: width 0.5s cubic-bezier(0.4,0,0.2,1); border-radius: 100px; width: 0%; }
+
+.quiz-body { padding: 2.5rem; min-height: 320px; }
+.q-step { display: none; animation: stepIn 0.35s ease; }
 .q-step.active { display: block; }
-.q-num { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emeraude); margin-bottom: 0.45rem; }
-.q-text { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--blanc); line-height: 1.25; margin-bottom: 0.5rem; }
+@keyframes stepIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+.q-meta { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+.q-num { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emeraude); }
+.q-cat { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--argent); padding: 0.15rem 0.6rem; border: 1px solid rgba(148,163,184,0.2); border-radius: 100px; }
+.q-text { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--blanc); line-height: 1.25; margin-bottom: 0.5rem; }
 .q-hint { font-size: 0.82rem; color: var(--argent); margin-bottom: 1.8rem; line-height: 1.6; }
-.q-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.q-opt { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.2rem 1.4rem; border: 1px solid rgba(203,213,225,0.18); border-radius: 5px; cursor: pointer; transition: var(--t); font-size: 0.9rem; color: var(--argent-l); background: transparent; text-align: left; }
-.q-opt:hover { border-color: var(--emeraude); color: var(--blanc); background: rgba(16,185,129,0.07); }
-.q-opt.sel { border-color: var(--emeraude); color: var(--blanc); background: rgba(16,185,129,0.13); }
-.q-ico { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
-.q-lbl { font-weight: 500; display: block; }
-.q-sub { font-size: 0.73rem; color: var(--argent); display: block; margin-top: 0.15rem; }
+
+/* Options grid — adaptatif selon le nombre */
+.q-opts { display: grid; gap: 0.9rem; }
+.q-opts.cols-2 { grid-template-columns: 1fr 1fr; }
+.q-opts.cols-1 { grid-template-columns: 1fr; }
+
+.q-opt {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid rgba(203,213,225,0.16); border-radius: 6px;
+  cursor: pointer; transition: var(--t); text-align: left;
+  background: transparent; width: 100%;
+}
+.q-opt:hover { border-color: var(--emeraude); background: rgba(16,185,129,0.06); }
+.q-opt.sel { border-color: var(--emeraude); background: rgba(16,185,129,0.12); }
+.q-opt-ico { font-size: 1.4rem; flex-shrink: 0; line-height: 1; }
+.q-opt-text { flex: 1; }
+.q-opt-lbl { font-size: 0.9rem; font-weight: 600; color: var(--blanc); display: block; margin-bottom: 0.15rem; }
+.q-opt-sub { font-size: 0.76rem; color: var(--argent); display: block; line-height: 1.5; }
+
+/* Résultat */
 .quiz-result { display: none; padding: 2.5rem; }
-.quiz-result.show { display: block; animation: fadeUp 0.5s ease; }
-.res-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; }
-.res-ico { font-size: 2.8rem; }
-.res-tag { font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--emeraude); margin-bottom: 0.2rem; }
-.res-name { font-family: var(--serif); font-size: 1.85rem; font-weight: 700; color: var(--blanc); }
-.res-card { background: linear-gradient(135deg, rgba(16,185,129,0.09), rgba(16,185,129,0.02)); border: 1px solid rgba(16,185,129,0.28); border-radius: 8px; padding: 2rem; }
-.res-desc { font-size: 0.92rem; color: var(--argent-l); line-height: 1.75; margin-bottom: 1.2rem; }
-.res-price { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--emeraude); margin-bottom: 1.3rem; }
-#resList { list-style: none; }
-#resList li { font-size: 0.85rem; color: var(--argent-l); padding: 0.32rem 0; display: flex; align-items: baseline; gap: 0.55rem; border-bottom: 1px solid rgba(203,213,225,0.06); }
-#resList li:last-child { border-bottom: none; }
-#resList li::before { content: '✓'; color: var(--emeraude); font-weight: 700; flex-shrink: 0; }
-.res-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-.quiz-reset { background: transparent; border: 1px solid rgba(203,213,225,0.18); color: var(--argent); padding: 0.7rem 1.3rem; border-radius: 3px; font-size: 0.8rem; transition: var(--t); }
+.quiz-result.show { display: block; animation: stepIn 0.5s ease; }
+.res-score-bar { margin-bottom: 2rem; }
+.res-score-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--argent); margin-bottom: 0.5rem; }
+.res-score-track { height: 5px; background: rgba(203,213,225,0.1); border-radius: 100px; overflow: hidden; }
+.res-score-fill { height: 100%; border-radius: 100px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+.res-score-fill.low { background: linear-gradient(90deg, #F59E0B, #FCD34D); }
+.res-score-fill.mid { background: linear-gradient(90deg, #F97316, #FB923C); }
+.res-score-fill.high { background: linear-gradient(90deg, #EF4444, #F87171); }
+
+.res-header { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.5rem; }
+.res-ico { font-size: 2.6rem; line-height: 1; flex-shrink: 0; }
+.res-meta { flex: 1; }
+.res-urgence { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 100px; margin-bottom: 0.5rem; display: inline-block; }
+.res-urgence.low { background: rgba(245,158,11,0.15); color: #FCD34D; }
+.res-urgence.mid { background: rgba(249,115,22,0.15); color: #FB923C; }
+.res-urgence.high { background: rgba(239,68,68,0.15); color: #F87171; }
+.res-name { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--blanc); line-height: 1.15; }
+.res-tag { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--emeraude); margin-top: 0.25rem; }
+
+.res-body { background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02)); border: 1px solid rgba(16,185,129,0.22); border-radius: 8px; padding: 1.8rem; margin-bottom: 1.5rem; }
+.res-desc { font-size: 0.9rem; color: var(--argent-l); line-height: 1.78; margin-bottom: 1.3rem; }
+.res-price { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--emeraude); margin-bottom: 1.2rem; }
+.res-items { list-style: none; }
+.res-items li { font-size: 0.84rem; color: var(--argent-l); padding: 0.3rem 0; display: flex; align-items: baseline; gap: 0.55rem; border-bottom: 1px solid rgba(203,213,225,0.06); }
+.res-items li:last-child { border-bottom: none; }
+.res-items li::before { content: '✓'; color: var(--emeraude); font-weight: 700; flex-shrink: 0; }
+
+.res-points { margin-bottom: 1.5rem; }
+.res-points-title { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--argent); margin-bottom: 0.8rem; }
+.res-point { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.83rem; color: var(--argent-l); }
+.res-point-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.res-point-dot.risk { background: #F87171; }
+.res-point-dot.ok { background: var(--emeraude); }
+
+.res-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.quiz-reset { background: transparent; border: 1px solid rgba(203,213,225,0.18); color: var(--argent); padding: 0.7rem 1.3rem; border-radius: 3px; font-size: 0.78rem; transition: var(--t); cursor: pointer; }
 .quiz-reset:hover { border-color: var(--argent-l); color: var(--blanc); }
 
 /* ── PILIERS ── */
@@ -135,7 +156,7 @@
 
 @media (max-width: 900px) {
   .actu-grid, .piliers-grid { grid-template-columns: 1fr; }
-  .q-opts { grid-template-columns: 1fr; }
+  .q-opts.cols-2 { grid-template-columns: 1fr; }
   .hero-stats { gap: 2rem; }
 }
 </style>
@@ -173,22 +194,17 @@
 <section id="hero">
   <canvas id="heroCanvas"></canvas>
   <div class="hero-wrap">
-
-    <!-- Bouclier SVG animé -->
     <div class="hero-emblem" aria-hidden="true">
       <svg viewBox="0 0 100 112" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="sg" x1="0" y1="0" x2="100" y2="112" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#1a3a6e"/>
-            <stop offset="100%" stop-color="#0b1d35"/>
+            <stop offset="0%" stop-color="#1a3a6e"/><stop offset="100%" stop-color="#0b1d35"/>
           </linearGradient>
           <linearGradient id="bg" x1="0" y1="0" x2="100" y2="112" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#34D399"/>
-            <stop offset="100%" stop-color="#059669"/>
+            <stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#059669"/>
           </linearGradient>
           <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <!-- Pulse rings -->
         <circle cx="50" cy="56" r="30" fill="none" stroke="rgba(16,185,129,0.18)" stroke-width="1">
           <animate attributeName="r" values="30;46;30" dur="3.2s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.4;0;0.4" dur="3.2s" repeatCount="indefinite"/>
@@ -197,41 +213,30 @@
           <animate attributeName="r" values="30;46;30" dur="3.2s" begin="1.6s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.3;0;0.3" dur="3.2s" begin="1.6s" repeatCount="indefinite"/>
         </circle>
-        <!-- Shield -->
         <path d="M50 3 L92 20 L92 56 C92 80 68 104 50 109 C32 104 8 80 8 56 L8 20 Z" fill="url(#sg)" stroke="url(#bg)" stroke-width="2.2"/>
         <path d="M50 11 L84 25 L84 56 C84 76 64 97 50 102 C36 97 16 76 16 56 L16 25 Z" fill="none" stroke="rgba(52,211,153,0.12)" stroke-width="1"/>
-        <!-- Check -->
         <path d="M30 56 L44 71 L70 40" stroke="#10B981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
       </svg>
     </div>
-
     <h1 class="hero-h1">
       La conformité RGPD & IA Act,<br><span class="em">enfin à votre portée.</span>
       <span class="hero-sub">Audit · Mise en conformité · Formation · Expert dédié</span>
     </h1>
-
-    <p class="hero-p">
-      Privalys Conseil accompagne toutes les entreprises — PME, TPE, ETI — dans la maîtrise de leurs obligations réglementaires. Audit ciblé, mise en conformité sur-mesure, formations certifiantes. Un expert dédié à chaque mission, pour des résultats concrets et défendables.
-    </p>
-
+    <p class="hero-p">Privalys Conseil accompagne toutes les entreprises — PME, TPE, ETI — dans la maîtrise de leurs obligations réglementaires. Audit ciblé, mise en conformité sur-mesure, formations certifiantes. Un expert dédié à chaque mission, pour des résultats concrets et défendables.</p>
     <div class="hero-btns">
       <a href="contact.html" class="btn btn-em">Démarrer mon audit →</a>
-      <a href="#quiz" class="btn btn-ghost">Tester ma conformité</a>
+      <a href="#quiz" class="btn btn-ghost">Évaluer mon niveau de risque</a>
     </div>
-
     <div class="hero-stats">
       <div class="stat"><span class="stat-n">7</span><span class="stat-l">Packs sur-mesure</span></div>
       <div class="stat"><span class="stat-n">24h</span><span class="stat-l">Réponse garantie</span></div>
       <div class="stat"><span class="stat-n">2</span><span class="stat-l">Expertises unifiées</span></div>
       <div class="stat"><span class="stat-n">360°</span><span class="stat-l">Couverture réglementaire</span></div>
     </div>
-
-    <!-- Scroll cue intégré au flux, bien en dessous des stats -->
     <div class="scroll-cue">
       <span>Découvrir</span>
       <div class="scroll-cue-line"></div>
     </div>
-
   </div>
 </section>
 
@@ -274,72 +279,289 @@
 <!-- ════ QUIZ ════ -->
 <section id="quiz">
   <div class="wrap">
-    <div style="text-align:center" class="reveal">
-      <p class="lbl">Diagnostic interactif</p>
-      <h2 class="h2" style="max-width:100%;text-align:center">Êtes-vous concerné ?<br><span class="em">Trouvez votre pack en 2 minutes.</span></h2>
-      <p class="lead" style="max-width:570px;margin:0.8rem auto 0;text-align:center">Répondez à 4 questions simples. Notre algorithme vous oriente vers la solution exactement adaptée à votre situation.</p>
+    <div class="quiz-intro reveal">
+      <p class="lbl">Diagnostic de conformité</p>
+      <h2 class="h2" style="max-width:100%;text-align:center">Évaluez votre niveau<span class="em"> d'exposition réglementaire.</span></h2>
+      <p class="lead" style="max-width:600px;margin:0.9rem auto 0;text-align:center">6 questions précises pour identifier vos risques RGPD et IA Act prioritaires et vous orienter vers la solution adaptée à votre situation réelle.</p>
     </div>
+
     <div class="quiz-box">
       <div class="quiz-head">
-        <h3>Votre diagnostic Privalys</h3>
-        <p>4 questions · Résultat immédiat · Sans inscription · Gratuit</p>
-        <div class="qbar-wrap"><div id="quizBar"></div></div>
+        <h3>Diagnostic Privalys Conseil</h3>
+        <p>6 questions · Résultat instantané · Gratuit · Sans inscription</p>
+        <div class="quiz-progress">
+          <span class="quiz-progress-label" id="quizProgressLabel">Question 1 / 6</span>
+          <div class="qbar-wrap"><div id="quizBar"></div></div>
+        </div>
       </div>
+
       <div class="quiz-body" id="quizSteps">
+
+        <!-- Q1 — Données personnelles -->
         <div class="q-step active" id="q1">
-          <p class="q-num">Question 1 / 4</p>
-          <h3 class="q-text">Votre entreprise collecte-t-elle des données personnelles ?</h3>
-          <p class="q-hint">Noms, emails, téléphones, CV, données de navigation clients ou salariés — tout cela constitue des données personnelles soumises au RGPD.</p>
-          <div class="q-opts">
-            <button class="q-opt" onclick="quizAnswer('q1','oui')"><span class="q-ico">✅</span><span><span class="q-lbl">Oui, nous collectons des données</span><span class="q-sub">CRM, formulaires, RH, emails…</span></span></button>
-            <button class="q-opt" onclick="quizAnswer('q1','non')"><span class="q-ico">❌</span><span><span class="q-lbl">Non, pas à ma connaissance</span><span class="q-sub">Activité sans contact direct</span></span></button>
+          <div class="q-meta">
+            <span class="q-num">01 / 06</span>
+            <span class="q-cat">RGPD · Traitements de données</span>
+          </div>
+          <h3 class="q-text">Votre organisation traite-t-elle des données personnelles de clients, prospects ou salariés ?</h3>
+          <p class="q-hint">Coordonnées, historiques d'achat, données RH, fichiers de candidatures, emails, données de navigation — toute information permettant d'identifier une personne physique est une donnée personnelle soumise au RGPD.</p>
+          <div class="q-opts cols-2">
+            <button class="q-opt" onclick="quizAnswer('q1', 'oui', 3)">
+              <span class="q-opt-ico">📊</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui — nous traitons régulièrement des données</span>
+                <span class="q-opt-sub">CRM, RH, e-commerce, newsletter, formulaires de contact…</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q1', 'occasionnel', 1)">
+              <span class="q-opt-ico">📋</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Occasionnellement — de façon limitée</span>
+                <span class="q-opt-sub">Quelques contacts, peu de traitements structurés</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q1', 'non', 0)">
+              <span class="q-opt-ico">🚫</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Non — nous n'en avons pas à notre connaissance</span>
+                <span class="q-opt-sub">Activité sans collecte de données identifiantes</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q1', 'sensible', 4)">
+              <span class="q-opt-ico">🏥</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui — dont des données sensibles</span>
+                <span class="q-opt-sub">Santé, origine ethnique, données biométriques, opinions politiques…</span>
+              </span>
+            </button>
           </div>
         </div>
+
+        <!-- Q2 — Documentation RGPD -->
         <div class="q-step" id="q2">
-          <p class="q-num">Question 2 / 4</p>
-          <h3 class="q-text">Vos équipes utilisent-elles des outils d'IA dans leur travail ?</h3>
-          <p class="q-hint">ChatGPT, Copilot, Gemini, outils de rédaction automatique, chatbots clients — même de manière non officielle.</p>
-          <div class="q-opts">
-            <button class="q-opt" onclick="quizAnswer('q2','oui')"><span class="q-ico">🤖</span><span><span class="q-lbl">Oui, régulièrement</span><span class="q-sub">Officiellement ou en "Shadow IA"</span></span></button>
-            <button class="q-opt" onclick="quizAnswer('q2','non')"><span class="q-ico">🚫</span><span><span class="q-lbl">Non ou je ne suis pas sûr</span><span class="q-sub">Pas d'IA connue en usage actif</span></span></button>
+          <div class="q-meta">
+            <span class="q-num">02 / 06</span>
+            <span class="q-cat">RGPD · Documentation légale</span>
+          </div>
+          <h3 class="q-text">Quel est l'état de votre documentation RGPD actuelle ?</h3>
+          <p class="q-hint">Le RGPD impose un principe d'accountability : vous devez être en mesure de prouver votre conformité à tout moment. Le Registre des Traitements (RoPA), les politiques de confidentialité et les contrats de sous-traitance constituent le socle minimal obligatoire.</p>
+          <div class="q-opts cols-1">
+            <button class="q-opt" onclick="quizAnswer('q2', 'complet', 0)">
+              <span class="q-opt-ico">✅</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Documentation complète et à jour</span>
+                <span class="q-opt-sub">RoPA formalisé, politique de confidentialité, contrats de sous-traitance signés, mentions légales conformes</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q2', 'partiel', 2)">
+              <span class="q-opt-ico">⚠️</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Documentation partielle ou obsolète</span>
+                <span class="q-opt-sub">Certains documents existent mais sont incomplets, non mis à jour ou issus de templates non personnalisés</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q2', 'inexistant', 4)">
+              <span class="q-opt-ico">❌</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Documentation inexistante ou absente</span>
+                <span class="q-opt-sub">Pas de registre formalisé, pas de politique de confidentialité dédiée, pas de contrats de sous-traitance</span>
+              </span>
+            </button>
           </div>
         </div>
+
+        <!-- Q3 — Usages IA -->
         <div class="q-step" id="q3">
-          <p class="q-num">Question 3 / 4</p>
-          <h3 class="q-text">Souhaitez-vous former vos collaborateurs à la conformité ?</h3>
-          <p class="q-hint">Une équipe formée est votre meilleure protection. L'attestation de formation est une preuve de diligence légale admissible devant la CNIL.</p>
-          <div class="q-opts">
-            <button class="q-opt" onclick="quizAnswer('q3','oui')"><span class="q-ico">🎓</span><span><span class="q-lbl">Oui, c'est une priorité</span><span class="q-sub">RGPD et/ou IA Act</span></span></button>
-            <button class="q-opt" onclick="quizAnswer('q3','non')"><span class="q-ico">⏳</span><span><span class="q-lbl">Pas pour l'instant</span><span class="q-sub">Priorité à la conformité documentaire</span></span></button>
+          <div class="q-meta">
+            <span class="q-num">03 / 06</span>
+            <span class="q-cat">IA Act · Usages & Shadow IA</span>
+          </div>
+          <h3 class="q-text">Comment vos équipes utilisent-elles les outils d'intelligence artificielle au quotidien ?</h3>
+          <p class="q-hint">L'IA Act s'applique à tout utilisateur professionnel d'IA, qu'il s'agisse d'une souscription officielle ou d'un usage informel. Le "Shadow IA" — outils IA utilisés sans autorisation — engage votre responsabilité au même titre que les outils validés.</p>
+          <div class="q-opts cols-2">
+            <button class="q-opt" onclick="quizAnswer('q3', 'officiel_encadre', 0)">
+              <span class="q-opt-ico">🏢</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Usage officiel, encadré par une charte</span>
+                <span class="q-opt-sub">Outils validés, règles définies, équipes sensibilisées</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q3', 'officiel_non_encadre', 2)">
+              <span class="q-opt-ico">💼</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Usage officiel, sans charte ni règles formelles</span>
+                <span class="q-opt-sub">Les outils sont autorisés mais leur usage n'est pas documenté ni encadré</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q3', 'shadow', 3)">
+              <span class="q-opt-ico">👥</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Usage informel ou Shadow IA probable</span>
+                <span class="q-opt-sub">Les collaborateurs utilisent probablement des IA sans validation de la direction</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q3', 'aucun', 0)">
+              <span class="q-opt-ico">🚫</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Aucun usage IA à notre connaissance</span>
+                <span class="q-opt-sub">Pas d'outil IA identifié dans nos process</span>
+              </span>
+            </button>
           </div>
         </div>
+
+        <!-- Q4 — Sous-traitants & tiers -->
         <div class="q-step" id="q4">
-          <p class="q-num">Question 4 / 4</p>
-          <h3 class="q-text">Disposez-vous d'un Registre des Traitements (RoPA) à jour ?</h3>
-          <p class="q-hint">Le RoPA est obligatoire dès lors que vous traitez des données personnelles. Son absence est le premier motif de mise en demeure par la CNIL.</p>
-          <div class="q-opts">
-            <button class="q-opt" onclick="quizAnswer('q4','oui')"><span class="q-ico">📋</span><span><span class="q-lbl">Oui, il est à jour</span><span class="q-sub">Registre formalisé et documenté</span></span></button>
-            <button class="q-opt" onclick="quizAnswer('q4','non')"><span class="q-ico">📭</span><span><span class="q-lbl">Non ou incomplet</span><span class="q-sub">Pas de registre formalisé</span></span></button>
+          <div class="q-meta">
+            <span class="q-num">04 / 06</span>
+            <span class="q-cat">RGPD · Sous-traitance & flux de données</span>
+          </div>
+          <h3 class="q-text">Faites-vous appel à des prestataires ou logiciels tiers qui traitent des données pour votre compte ?</h3>
+          <p class="q-hint">Hébergeur cloud, CRM, outil RH, solution comptable, prestataire marketing, chatbot client — tout sous-traitant qui accède à vos données personnelles doit faire l'objet d'un contrat de sous-traitance conforme à l'article 28 du RGPD. En l'absence de ce contrat, vous êtes seul responsable en cas d'incident.</p>
+          <div class="q-opts cols-1">
+            <button class="q-opt" onclick="quizAnswer('q4', 'contrats_signes', 0)">
+              <span class="q-opt-ico">📑</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui, avec contrats de sous-traitance RGPD signés pour chaque prestataire</span>
+                <span class="q-opt-sub">Clauses contractuelles à jour, DPA signés, liste des sous-traitants documentée</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q4', 'contrats_partiels', 2)">
+              <span class="q-opt-ico">🔍</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui, mais les contrats sont incomplets ou absents pour certains</span>
+                <span class="q-opt-sub">Quelques contrats signés mais des prestataires ne sont pas encore encadrés</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q4', 'sans_contrats', 4)">
+              <span class="q-opt-ico">⚠️</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui, mais sans contrats de sous-traitance formalisés</span>
+                <span class="q-opt-sub">Des prestataires accèdent à nos données sans encadrement contractuel RGPD</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q4', 'aucun', 0)">
+              <span class="q-opt-ico">✅</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Non — nous ne faisons appel à aucun sous-traitant data</span>
+                <span class="q-opt-sub">Toutes les données restent en interne, aucun accès tiers</span>
+              </span>
+            </button>
           </div>
         </div>
-      </div>
+
+        <!-- Q5 — Formation des équipes -->
+        <div class="q-step" id="q5">
+          <div class="q-meta">
+            <span class="q-num">05 / 06</span>
+            <span class="q-cat">Sensibilisation · Preuve de diligence</span>
+          </div>
+          <h3 class="q-text">Vos collaborateurs ont-ils été formés aux règles de conformité RGPD et/ou IA Act ?</h3>
+          <p class="q-hint">La CNIL considère la formation des équipes comme une preuve de diligence décisive. Une attestation de formation individuelle constitue un élément à charge en votre faveur lors d'un contrôle ou d'une mise en demeure. L'absence totale de formation est fréquemment retenue comme circonstance aggravante.</p>
+          <div class="q-opts cols-1">
+            <button class="q-opt" onclick="quizAnswer('q5', 'forme_recemment', 0)">
+              <span class="q-opt-ico">🎓</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui — formation récente avec attestations individuelles</span>
+                <span class="q-opt-sub">Formation réalisée dans les 24 derniers mois, attestations archivées pour chaque participant</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q5', 'forme_ancien', 1)">
+              <span class="q-opt-ico">📅</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Oui — mais la formation date de plus de 2 ans</span>
+                <span class="q-opt-sub">Une sensibilisation a eu lieu mais n'est plus à jour face aux évolutions réglementaires</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q5', 'sensibilisation_informelle', 2)">
+              <span class="q-opt-ico">💬</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Sensibilisation informelle uniquement</span>
+                <span class="q-opt-sub">Quelques échanges ou emails internes, mais aucune formation structurée ni attestation</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q5', 'aucune', 3)">
+              <span class="q-opt-ico">❌</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Aucune formation ni sensibilisation à ce jour</span>
+                <span class="q-opt-sub">Les équipes n'ont reçu aucune information structurée sur leurs obligations RGPD ou IA Act</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q6 — Incidents & exposition -->
+        <div class="q-step" id="q6">
+          <div class="q-meta">
+            <span class="q-num">06 / 06</span>
+            <span class="q-cat">Exposition · Contexte & enjeux</span>
+          </div>
+          <h3 class="q-text">Votre entreprise a-t-elle été exposée à l'un de ces événements ou situations récemment ?</h3>
+          <p class="q-hint">Certains contextes augmentent significativement votre niveau de risque réglementaire et nécessitent une action prioritaire. Sélectionnez la situation la plus proche de votre réalité actuelle.</p>
+          <div class="q-opts cols-2">
+            <button class="q-opt" onclick="quizAnswer('q6', 'incident', 4)">
+              <span class="q-opt-ico">🚨</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Incident de sécurité ou demande de droits non traitée</span>
+                <span class="q-opt-sub">Fuite de données, demande d'accès ARCO sans réponse, plainte d'un client ou salarié</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q6', 'croissance', 2)">
+              <span class="q-opt-ico">📈</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Croissance, recrutement ou nouveaux outils IA déployés</span>
+                <span class="q-opt-sub">L'organisation évolue, de nouveaux traitements ou outils IA ont été mis en place sans audit préalable</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q6', 'business', 2)">
+              <span class="q-opt-ico">🤝</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Appel d'offres, levée de fonds ou due diligence en cours</span>
+                <span class="q-opt-sub">Un partenaire, investisseur ou client exige une preuve de conformité RGPD / IA Act</span>
+              </span>
+            </button>
+            <button class="q-opt" onclick="quizAnswer('q6', 'proactif', 1)">
+              <span class="q-opt-ico">🛡️</span>
+              <span class="q-opt-text">
+                <span class="q-opt-lbl">Démarche proactive — anticipation des risques</span>
+                <span class="q-opt-sub">Pas d'incident identifié, mais nous souhaitons sécuriser notre conformité en amont</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /quizSteps -->
+
+      <!-- RÉSULTAT -->
       <div class="quiz-result" id="quizResult">
+        <div class="res-score-bar">
+          <p class="res-score-label" id="resScoreLabel">Niveau d'exposition réglementaire</p>
+          <div class="res-score-track">
+            <div class="res-score-fill" id="resScoreFill" style="width:0%"></div>
+          </div>
+        </div>
         <div class="res-header">
           <div class="res-ico" id="resIcon">🎯</div>
-          <div><p class="res-tag" id="resTag">Notre recommandation</p><p class="res-name" id="resName">—</p></div>
+          <div class="res-meta">
+            <span class="res-urgence" id="resUrgence">—</span>
+            <p class="res-name" id="resName">—</p>
+            <p class="res-tag" id="resTag">—</p>
+          </div>
         </div>
-        <div class="res-card">
+        <div class="res-body">
           <p class="res-desc" id="resDesc">—</p>
+          <div class="res-points" id="resPoints"></div>
           <p class="res-price" id="resPrice">—</p>
-          <ul id="resList"></ul>
+          <ul class="res-items" id="resList"></ul>
         </div>
         <div class="res-actions">
           <a href="contact.html" class="btn btn-em">Demander ce pack →</a>
           <a href="offres.html" class="btn btn-ghost">Voir toutes les offres</a>
-          <button class="quiz-reset" onclick="resetQuiz()">↺ Recommencer</button>
+          <button class="quiz-reset" onclick="resetQuiz()">↺ Refaire le diagnostic</button>
         </div>
       </div>
-    </div>
+
+    </div><!-- /quiz-box -->
   </div>
 </section>
 
@@ -430,6 +652,204 @@
     </div>
   </div>
 </footer>
+
+<script>
+/* ══════════════════════════════════════════════
+   QUIZ — 6 questions, scoring multi-critères
+══════════════════════════════════════════════ */
+const TOTAL_STEPS = 6;
+let quizAnswers = {}, quizStep = 0, quizScore = 0;
+const stepIds = ['q1','q2','q3','q4','q5','q6'];
+
+function quizAnswer(q, val, points) {
+  quizAnswers[q] = val;
+  quizScore += points;
+  // Highlight selected
+  document.querySelectorAll('#' + q + ' .q-opt').forEach(o => o.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  // Update progress
+  const pct = ((quizStep + 1) / TOTAL_STEPS) * 100;
+  document.getElementById('quizBar').style.width = pct + '%';
+  setTimeout(quizNext, 420);
+}
+
+function quizNext() {
+  document.getElementById(stepIds[quizStep]).classList.remove('active');
+  quizStep++;
+  if (quizStep < TOTAL_STEPS) {
+    document.getElementById(stepIds[quizStep]).classList.add('active');
+    document.getElementById('quizProgressLabel').textContent = 'Question ' + (quizStep + 1) + ' / ' + TOTAL_STEPS;
+  } else {
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  document.getElementById('quizSteps').style.display = 'none';
+  document.getElementById('quizBar').style.width = '100%';
+  document.getElementById('quizProgressLabel').textContent = 'Diagnostic terminé';
+
+  // Score max = 4+4+3+4+3+4 = 22
+  const maxScore = 22;
+  const pct = Math.round((quizScore / maxScore) * 100);
+
+  // Determine pack & urgency based on answers + score
+  const a = quizAnswers;
+  let pack, urgency, urgencyClass, scoreFillClass;
+
+  // Scoring logic
+  if (pct >= 65 || a.q6 === 'incident') {
+    urgency = '🔴 Exposition critique — Action immédiate requise';
+    urgencyClass = 'high'; scoreFillClass = 'high';
+  } else if (pct >= 35) {
+    urgency = '🟠 Exposition modérée — Mise en conformité prioritaire';
+    urgencyClass = 'mid'; scoreFillClass = 'mid';
+  } else {
+    urgency = '🟡 Exposition limitée — Sécurisation préventive recommandée';
+    urgencyClass = 'low'; scoreFillClass = 'low';
+  }
+
+  // Pack recommendation based on answers
+  const hasRGPD = ['oui','sensible','occasionnel'].includes(a.q1);
+  const hasIA   = ['officiel_encadre','officiel_non_encadre','shadow'].includes(a.q3) && a.q3 !== 'aucun';
+  const needsForm = ['aucune','sensibilisation_informelle','forme_ancien'].includes(a.q5);
+  const docKO  = ['partiel','inexistant'].includes(a.q2);
+  const iaCritical = a.q3 === 'shadow' || a.q3 === 'officiel_non_encadre';
+  const isSensible = a.q1 === 'sensible';
+  const urgentContext = a.q6 === 'incident' || a.q6 === 'business';
+
+  if ((isSensible || urgentContext) && hasIA && needsForm) {
+    pack = {
+      icon: '🏆', name: "L'Expertise 360°", tag: "Trio complet — RGPD + IA Act + Formation",
+      urgLabel: urgency,
+      desc: "Votre diagnostic révèle des expositions simultanées sur vos traitements de données, vos usages IA et la sensibilisation de vos équipes. L'Expertise 360° est la réponse la plus adaptée : une intervention intégrée qui traite l'ensemble de vos risques en une seule mission coordonnée.",
+      price: "À partir de 2 490 € HT",
+      items: ["Audit RGPD complet + RoPA", "Audit IA Act + inventaire Shadow IA", "Documentation unifiée et personnalisée", "Charte d'utilisation de l'IA", "2 ateliers de formation certifiants (RGPD + IA Act)", "Rapport exécutif pour votre Direction"],
+      points: buildPoints(a)
+    };
+  } else if (hasRGPD && hasIA && !needsForm) {
+    pack = {
+      icon: '⭐', name: "Sérénité Numérique", tag: "Duo RGPD + IA Act",
+      urgLabel: urgency,
+      desc: "Vous traitez des données personnelles et utilisez des outils IA. Ces deux périmètres sont réglementairement liés — les traiter séparément créerait des angles morts. Le pack Sérénité Numérique couvre les deux dans une analyse croisée cohérente.",
+      price: "À partir de 1 690 € HT",
+      items: ["Audit RGPD complet (RoPA, mentions, cookies, droits)", "Audit IA Act + inventaire des usages", "Analyse croisée RGPD × IA Act", "Politique de confidentialité unifiée", "Charte IA + contrats sous-traitance", "Rapport de conformité consolidé"],
+      points: buildPoints(a)
+    };
+  } else if (hasRGPD && needsForm && !iaCritical) {
+    pack = {
+      icon: '🛡️', name: "Conformité Totale", tag: "Duo RGPD + Formation",
+      urgLabel: urgency,
+      desc: "Votre priorité est la conformité RGPD accompagnée d'une montée en compétences de vos équipes. Ce duo traite simultanément votre documentation légale et la sensibilisation de vos collaborateurs — la protection documentaire et humaine.",
+      price: "À partir de 1 590 € HT",
+      items: ["Audit RGPD complet (RoPA, mentions, cookies)", "Gestion des demandes de droits des personnes", "Contrats de sous-traitance", "Atelier formation RGPD (2h)", "Attestations individuelles certifiantes", "Rapport de conformité + plan d'action"],
+      points: buildPoints(a)
+    };
+  } else if (iaCritical && needsForm && !docKO) {
+    pack = {
+      icon: '🚀', name: "Propulsion Sécurisée", tag: "Duo IA Act + Formation",
+      urgLabel: urgency,
+      desc: "Des usages IA non encadrés et des équipes non formées — c'est la combinaison la plus risquée face à l'IA Act. Ce duo audit vos pratiques et forme immédiatement vos équipes sur les règles à respecter.",
+      price: "À partir de 1 490 € HT",
+      items: ["Inventaire complet des usages IA officiels et Shadow IA", "Classification des risques IA Act", "Charte d'utilisation de l'IA", "Atelier formation IA Act (2h)", "Attestations individuelles certifiantes", "Politique de gestion des prompts et données"],
+      points: buildPoints(a)
+    };
+  } else if (hasIA && !hasRGPD) {
+    pack = {
+      icon: '🤖', name: "IA Guardian", tag: "Pack Solo — IA Act",
+      urgLabel: urgency,
+      desc: "Votre principal enjeu réglementaire est lié à vos usages IA. L'IA Guardian cartographie l'ensemble de vos outils, classe vos risques selon l'IA Act et vous dote d'une charte interne opposable.",
+      price: "À partir de 890 € HT",
+      items: ["Inventaire des usages IA officiels et Shadow IA", "Classification des risques selon l'IA Act", "Audit des flux de données vers les outils IA", "Charte d'utilisation de l'IA", "Politique de sécurisation des prompts", "Rapport de conformité IA Act"],
+      points: buildPoints(a)
+    };
+  } else if (hasRGPD && !hasIA && !needsForm) {
+    pack = {
+      icon: '📋', name: "Héritage RGPD", tag: "Pack Solo — RGPD",
+      urgLabel: urgency,
+      desc: "Votre exposition principale concerne vos traitements de données personnelles. L'Héritage RGPD couvre l'ensemble de votre mise en conformité documentaire : du registre des traitements aux contrats de sous-traitance.",
+      price: "À partir de 990 € HT",
+      items: ["Audit du Registre des Traitements (RoPA)", "Refonte des mentions légales", "Audit cookies & consentement", "Gestion des demandes de droits des sujets", "Contrats de sous-traitance", "Rapport de conformité + plan d'action priorisé"],
+      points: buildPoints(a)
+    };
+  } else if (needsForm && !hasRGPD && !iaCritical) {
+    pack = {
+      icon: '🎓', name: "Academy Formation", tag: "Pack Solo — Formation",
+      urgLabel: urgency,
+      desc: "Votre priorité immédiate est la sensibilisation de vos équipes. Une formation structurée avec attestations est votre première ligne de défense et votre preuve de diligence légale la plus rapide à constituer.",
+      price: "À partir de 690 € HT",
+      items: ["Atelier de 2h : RGPD fondamentaux ou IA Act", "Support de formation standardisé et actualisé", "Quiz de validation des acquis", "Attestation individuelle certifiante par participant", "Fiche mémo réflexes conformité"],
+      points: buildPoints(a)
+    };
+  } else {
+    pack = {
+      icon: '💡', name: "Consultation de cadrage", tag: "30 minutes — offertes",
+      urgLabel: '🟢 Bonne base — Sécurisation préventive',
+      desc: "Votre situation semble relativement maîtrisée, mais quelques points méritent d'être vérifiés. Une consultation de cadrage gratuite permettra d'identifier précisément vos angles morts avant qu'ils ne deviennent des risques.",
+      price: "30 min offertes — sans engagement",
+      items: ["Échange téléphonique 30 min", "Analyse de votre situation réelle", "Identification de vos risques résiduels", "Recommandation personnalisée", "Devis sur mesure si besoin"],
+      points: buildPoints(a)
+    };
+  }
+
+  // Render
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('resIcon').textContent = pack.icon;
+  document.getElementById('resName').textContent = pack.name;
+  document.getElementById('resTag').textContent = pack.tag;
+  document.getElementById('resDesc').textContent = pack.desc;
+  document.getElementById('resPrice').textContent = pack.price;
+
+  const urgEl = document.getElementById('resUrgence');
+  urgEl.textContent = urgency;
+  urgEl.className = 'res-urgence ' + urgencyClass;
+
+  const fill = document.getElementById('resScoreFill');
+  fill.className = 'res-score-fill ' + scoreFillClass;
+  setTimeout(() => { fill.style.width = pct + '%'; }, 100);
+  document.getElementById('resScoreLabel').textContent = 'Niveau d\'exposition : ' + pct + '% — ' + (pct >= 65 ? 'Critique' : pct >= 35 ? 'Modéré' : 'Limité');
+
+  const ul = document.getElementById('resList');
+  ul.innerHTML = pack.items.map(i => '<li>' + i + '</li>').join('');
+
+  const pts = document.getElementById('resPoints');
+  if (pack.points && pack.points.length) {
+    pts.innerHTML = '<p class="res-points-title">Points d\'attention identifiés</p>' +
+      pack.points.map(p => '<div class="res-point"><div class="res-point-dot ' + p.type + '"></div>' + p.text + '</div>').join('');
+  }
+}
+
+function buildPoints(a) {
+  const pts = [];
+  if (['inexistant','partiel'].includes(a.q2)) pts.push({ type:'risk', text:'Documentation RGPD insuffisante ou absente' });
+  if (a.q3 === 'shadow') pts.push({ type:'risk', text:'Shadow IA probable — usages non documentés' });
+  if (a.q3 === 'officiel_non_encadre') pts.push({ type:'risk', text:'Outils IA sans charte ni règles formelles' });
+  if (['sans_contrats','contrats_partiels'].includes(a.q4)) pts.push({ type:'risk', text:'Contrats de sous-traitance manquants ou incomplets' });
+  if (a.q5 === 'aucune') pts.push({ type:'risk', text:'Aucune formation ni preuve de diligence pour la CNIL' });
+  if (a.q6 === 'incident') pts.push({ type:'risk', text:'Incident de sécurité ou demande de droits non traitée' });
+  if (a.q6 === 'business') pts.push({ type:'risk', text:'Preuve de conformité requise pour un partenaire ou investisseur' });
+  if (a.q2 === 'complet') pts.push({ type:'ok', text:'Documentation RGPD existante — à vérifier et mettre à jour' });
+  if (a.q3 === 'officiel_encadre') pts.push({ type:'ok', text:'Usages IA encadrés par une charte interne' });
+  if (a.q5 === 'forme_recemment') pts.push({ type:'ok', text:'Équipes sensibilisées avec attestations à jour' });
+  return pts;
+}
+
+function resetQuiz() {
+  quizAnswers = {}; quizStep = 0; quizScore = 0;
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('quizSteps').style.display = 'block';
+  document.getElementById('quizBar').style.width = '0%';
+  document.getElementById('quizProgressLabel').textContent = 'Question 1 / 6';
+  stepIds.forEach((s, i) => {
+    const el = document.getElementById(s);
+    el.classList.toggle('active', i === 0);
+    el.querySelectorAll('.q-opt').forEach(o => o.classList.remove('sel'));
+  });
+  const fill = document.getElementById('resScoreFill');
+  fill.style.width = '0%';
+}
+</script>
+
 <script src="main.js"></script>
 </body>
 </html>
